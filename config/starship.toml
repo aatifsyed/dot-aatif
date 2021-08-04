@@ -1,0 +1,68 @@
+format = """
+[╭─\
+$status\
+$directory\
+$cmd_duration\
+$jobs\
+$kubernetes\
+$package\
+$python\
+$rust\
+$shlvl\
+> \
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+](fg:#EA005E)
+[╰╴](fg:#EA005E)$character"""
+
+[directory]
+format = '\([$path]($style)[( $read_only)]($read_only_style)\)─'
+substitutions = { '~/lab'="🧪", '~/code'="💻", '~'="🏠" }
+style = "fg:cyan"
+
+[cmd_duration]
+format = '\(🐌 [$duration]($style)\)─'
+style = "fg:yellow"
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+
+[git_commit]
+tag_disabled = false
+tag_symbol = "🔖"
+
+[jobs]
+format = '\([$jobs]($style)\)─'
+style = "fg:yellow"
+
+[kubernetes]
+# disabled = false
+
+[package]
+format = '\([$symbol$version]($style)\)─'
+
+[python]
+format = '\([$symbol$virtualenv]($style)\)─'
+symbol = "🐍"
+
+[rust]
+format = '\([$symbol]()$style\)─'
+symbol = "🦀"
+
+[shlvl]
+disabled = false
+format = '\([$symbol$shlvl]($style)\)─'
+symbol = "🕳"
+
+[status]
+format = '\([$symbol $status]($style)\)─'
+disabled = false
+map_symbol = true
+symbol = "❌"
+sigint_symbol = "⚡"
+signal_symbol = "🚦"
+
+[character]
+format = '[\$ ](fg:yellow)'

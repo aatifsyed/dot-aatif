@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit
+
+git commit --all --amend --no-edit
+
