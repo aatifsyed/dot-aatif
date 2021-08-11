@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit
+
+git describe --abbrev=0

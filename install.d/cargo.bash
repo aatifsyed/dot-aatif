@@ -4,10 +4,12 @@ set -o errexit -o xtrace
 cargo install --registry crates-io \
     bat \
     cargo-readme \
+    diskonaut \
     exa \
     fd-find \
     flamegraph \
     git-delta \
+    gitui \
     gping \
     loc \
     mdbook \

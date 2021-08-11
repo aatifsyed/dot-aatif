@@ -4,6 +4,7 @@
 alias bashrc="source ~/.bashrc"
 alias c="code ."
 alias datestr="date -u +\"%Y-%m-%dT%H-%M-%S%Z\""
+alias f="fzf"
 alias powershell="powershell.exe"
 alias winpath="wslpath -w"
 
