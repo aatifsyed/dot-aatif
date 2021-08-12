@@ -32,6 +32,8 @@ function path() {
 }
 
 # Open something with Windows
-function winopen() {
-    powershell.exe -Command "start $*"
+function winopen-file() {
+    local winpath
+    winpath="$(wslpath -w "$1")"
+    wslview "$winpath"
 }

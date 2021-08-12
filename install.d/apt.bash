@@ -14,4 +14,5 @@ sudo apt install --upgrade -y \
     ripgrep \
     shellcheck \
     sshpass \
-    unzip
+    unzip \
+    wslu
