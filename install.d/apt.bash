@@ -7,6 +7,7 @@ sudo apt install --upgrade -y \
     default-jre \
     flex \
     fzf \
+    golang \
     jq \
     python3 \
     python3-venv \
@@ -15,4 +16,5 @@ sudo apt install --upgrade -y \
     shellcheck \
     sshpass \
     unzip \
+    whois \
     wslu

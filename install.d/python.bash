@@ -8,6 +8,7 @@ python3 -m pip install --user --upgrade \
     jupyterlab \
     pandas \
     pipx \
+    ptpython \
     pyperclip \
     tables \
     xdg
