@@ -3,7 +3,10 @@ set -o errexit -o xtrace
 
 cargo install --registry crates-io \
     bat \
+    cargo-expand \
     cargo-readme \
+    cargo-tree \
+    cargo-workspaces \
     diskonaut \
     exa \
     fd-find \
@@ -15,6 +18,7 @@ cargo install --registry crates-io \
     mdbook \
     most-recently \
     starship \
-    tealdeer
+    tealdeer \
+    wait-until
 
 cargo install -f --git https://github.com/jez/as-tree

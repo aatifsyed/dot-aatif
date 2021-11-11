@@ -22,7 +22,7 @@ function isset() {
 }
 
 # Display a gui message
-function msg() {
+function popup() {
     msg.exe "*" "$@"
 }
 
@@ -37,3 +37,20 @@ function winopen-file() {
     winpath="$(wslpath -w "$1")"
     wslview "$winpath"
 }
+
+# Windows home
+function winhome() {
+	local winpath
+	local wslpath
+	winpath="$(wslvar USERPROFILE)"
+	wslpath="$(wslpath "$winpath")"
+	echo "$wslpath"
+}
+
+# Read in from the terminal
+function from_terminal() {
+	local var
+	read -p "from_terminal: " var </dev/tty
+	echo "${var}"
+}
+

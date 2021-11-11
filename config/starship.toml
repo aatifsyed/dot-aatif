@@ -1,6 +1,7 @@
 format = """
 [╭─\
 $status\
+$time\
 $directory\
 $cmd_duration\
 $jobs\
@@ -17,9 +18,15 @@ $git_status\
 ](fg:#EA005E)
 [╰╴](fg:#EA005E)$character"""
 
+[time]
+disabled = false
+format = '\([$time]($style)\)─'
+style = "bright-purple"
+time_format = '%H:%M'
+
 [directory]
 format = '\([$path]($style)[( $read_only)]($read_only_style)\)─'
-substitutions = { '~/lab'="🧪", '~/code'="💻", '~'="🏠" }
+substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~' = "🏠", '~/scratch' = "📝" }
 style = "fg:cyan"
 
 [cmd_duration]
@@ -38,7 +45,7 @@ format = '\([$jobs]($style)\)─'
 style = "fg:yellow"
 
 [kubernetes]
-# disabled = false
+disabled = false
 
 [package]
 format = '\([$symbol$version]($style)\)─'

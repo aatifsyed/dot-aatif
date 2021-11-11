@@ -15,3 +15,7 @@ export EDITOR=vim
 
 # Java
 export CLASSPATH="$CLASSPATH:$DATA_FOLDER/jars/antlr4.jar"
+
+# Locale
+export LC_ALL="C"
+
