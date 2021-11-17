@@ -15,7 +15,6 @@ alias winpath="wslpath -w"
 alias exa="exa --all --extended --git --group --header --long --time modified"
 alias gitlab="gitlab --output json --config-file \${XDG_CONFIG_HOME:-\$HOME/.config}/python-gitlab.cfg"
 alias less="less --RAW-CONTROL-CHARS"
-alias script="script --append --flush"
 alias whois="whois -H"
 
 # Functional

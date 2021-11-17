@@ -10,6 +10,7 @@ $package\
 $python\
 $rust\
 $shlvl\
+$env_var\
 > \
 $git_branch\
 $git_commit\
@@ -62,6 +63,12 @@ symbol = "🦀"
 disabled = false
 format = '┤[$symbol$shlvl]($style)├─'
 symbol = "🕳"
+
+[env_var]
+variable = "TYPESCRIPT"
+format = '┤$symbol[$env_value]($style)├─'
+style = "fg:bright-purple"
+symbol = "📝"
 
 [status]
 format = '┤[$symbol $status]($style)├─'

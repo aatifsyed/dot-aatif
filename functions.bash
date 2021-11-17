@@ -40,17 +40,33 @@ function winopen-file() {
 
 # Windows home
 function winhome() {
-	local winpath
-	local wslpath
-	winpath="$(wslvar USERPROFILE)"
-	wslpath="$(wslpath "$winpath")"
-	echo "$wslpath"
+    local winpath
+    local wslpath
+    winpath="$(wslvar USERPROFILE)"
+    wslpath="$(wslpath "$winpath")"
+    echo "$wslpath"
 }
 
 # Read in from the terminal
 function from_terminal() {
-	local var
-	read -p "from_terminal: " var </dev/tty
-	echo "${var}"
+    local var
+    read -rp "from_terminal: " var </dev/tty
+    echo "${var}"
 }
 
+# Override script with some defaults and set an environment variable for starship to pick up
+function script() {
+    local filename
+    filename="typescript"
+
+    for argument in "$@"; do
+        if [[ ! $argument == "$0" ]] && [[ ! $argument =~ ^-.* ]]; then
+            # Script will use the first non-flag argument as the filename.
+            # Skip over $0 - it contains the shell
+            filename=$argument
+            break
+        fi
+    done
+
+    TYPESCRIPT="$filename" command script --append --flush "$@"
+}
