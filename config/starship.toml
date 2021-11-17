@@ -16,7 +16,7 @@ $git_commit\
 $git_state\
 $git_status\
 ](fg:#EA005E)
-[╰╴](fg:#EA005E)$character"""
+[|](fg:#EA005E)$character"""
 
 [time]
 disabled = false
