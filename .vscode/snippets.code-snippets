@@ -20,8 +20,8 @@
 			"format"
 		],
 		"body": [
-			"format = '\\(${1:what}\\)─'",
+			"format = '┤${1:what}├─'",
 		],
-		"description": "Surround in rounded brackets"
+		"description": "Surround in a box"
 	}
 }

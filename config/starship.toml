@@ -1,5 +1,5 @@
 format = """
-[╭─\
+[┌─\
 $status\
 $time\
 $directory\
@@ -20,17 +20,17 @@ $git_status\
 
 [time]
 disabled = false
-format = '\([$time]($style)\)─'
+format = '┤[$time]($style)├─'
 style = "bright-purple"
 time_format = '%H:%M'
 
 [directory]
-format = '\([$path]($style)[( $read_only)]($read_only_style)\)─'
+format = '┤[$path]($style)[( $read_only)]($read_only_style)├─'
 substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~' = "🏠", '~/scratch' = "📝" }
 style = "fg:cyan"
 
 [cmd_duration]
-format = '\(🐌 [$duration]($style)\)─'
+format = '┤🐌 [$duration]($style)├─'
 style = "fg:yellow"
 
 [git_branch]
@@ -41,30 +41,30 @@ tag_disabled = false
 tag_symbol = "🔖"
 
 [jobs]
-format = '\([$jobs]($style)\)─'
+format = '┤[$jobs]($style)├─'
 style = "fg:yellow"
 
 [kubernetes]
 disabled = false
 
 [package]
-format = '\([$symbol$version]($style)\)─'
+format = '┤[$symbol$version]($style)├─'
 
 [python]
-format = '\([$symbol$virtualenv]($style)\)─'
+format = '┤[$symbol$virtualenv]($style)├─'
 symbol = "🐍"
 
 [rust]
-format = '\([$symbol]()$style\)─'
+format = '┤[$symbol]()$style├─'
 symbol = "🦀"
 
 [shlvl]
 disabled = false
-format = '\([$symbol$shlvl]($style)\)─'
+format = '┤[$symbol$shlvl]($style)├─'
 symbol = "🕳"
 
 [status]
-format = '\([$symbol $status]($style)\)─'
+format = '┤[$symbol $status]($style)├─'
 disabled = false
 map_symbol = true
 symbol = "❌"
