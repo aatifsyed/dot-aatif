@@ -7,6 +7,7 @@ alias c="code ."
 alias cf="code . \$(fzf --multi)"
 alias datestr="date -u +\"%Y-%m-%dT%H-%M-%S%Z\""
 alias f="fzf --multi"
+alias p="ptipython"
 alias powershell="powershell.exe"
 alias winpath="wslpath -w"
 
