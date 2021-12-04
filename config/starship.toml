@@ -27,8 +27,9 @@ time_format = '%H:%M'
 
 [directory]
 format = '┤[$path]($style)[( $read_only)]($read_only_style)├─'
-substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~' = "🏠", '~/scratch' = "📝" }
+substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~/scratch' = "📝", '~/sources' = "🛸", '~' = "🏠" }
 style = "fg:cyan"
+truncate_to_repo = false
 
 [cmd_duration]
 format = '┤🐌 [$duration]($style)├─'
