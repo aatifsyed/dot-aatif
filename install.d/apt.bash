@@ -13,6 +13,7 @@ sudo apt install --upgrade -y \
     jq \
     nmap \
     ncdu \
+    pandoc \
     pstack \
     python3 \
     python3-venv \
@@ -22,6 +23,9 @@ sudo apt install --upgrade -y \
     shellcheck \
     sshpass \
     sysstat \
+    texlive-fonts-recommended \
+    texlive-plain-generic \
+    texlive-xetex \
     traceroute \
     unzip \
     whois \

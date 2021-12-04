@@ -6,7 +6,10 @@ cargo install --registry crates-io \
     cargo-expand \
     cargo-readme \
     cargo-tree \
+    cargo-udeps \
+    cargo-update \
     cargo-workspaces \
+    critcmp \
     diskonaut \
     exa \
     fd-find \
@@ -15,6 +18,7 @@ cargo install --registry crates-io \
     gitui \
     gping \
     loc \
+    nu \
     mdbook \
     most-recently \
     starship \
