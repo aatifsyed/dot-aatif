@@ -29,3 +29,5 @@ source "$INSTALL_FOLDER/completion.bash"
 source "$INSTALL_FOLDER/functions.bash"
 
 eval "$(thefuck --alias)"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"

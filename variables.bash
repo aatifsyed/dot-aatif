@@ -7,6 +7,7 @@ GOPATH="${GOPATH:-$HOME/go}"
 export PATH="$PATH:~/.local/bin"
 export PATH="$PATH:$DATA_FOLDER/dot-aatif/bin"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.pyenv/bin"
 
 # `cd` should autocomplete for these folders
 export CDPATH=$CDPATH:~:~/code:~/lab:~/sources:~/.local/share

@@ -4,6 +4,7 @@ set -o errexit -o xtrace
 cargo install --registry crates-io \
     bat \
     cargo-expand \
+    cargo-prune \
     cargo-readme \
     cargo-tree \
     cargo-udeps \
@@ -17,6 +18,8 @@ cargo install --registry crates-io \
     git-delta \
     gitui \
     gping \
+    hyperfine \
+    irust \
     loc \
     nu \
     mdbook \

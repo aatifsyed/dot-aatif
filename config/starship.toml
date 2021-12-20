@@ -19,11 +19,14 @@ $git_status\
 ](fg:#EA005E)
 [|](fg:#EA005E)$character"""
 
-[time]
-disabled = false
-format = '┤[$time]($style)├─'
-style = "bright-purple"
-time_format = '%H:%M'
+[character]
+format = '$symbol '
+success_symbol = '[\$](fg:yellow)'
+error_symbol = '[\$](bold red)'
+
+[cmd_duration]
+format = '┤🐌 [$duration]($style)├─'
+style = "fg:yellow"
 
 [directory]
 format = '┤[$path]($style)[( $read_only)]($read_only_style)├─'
@@ -31,9 +34,11 @@ substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~/scratch' = "📝", '~/
 style = "fg:cyan"
 truncate_to_repo = false
 
-[cmd_duration]
-format = '┤🐌 [$duration]($style)├─'
-style = "fg:yellow"
+[env_var]
+variable = "TYPESCRIPT"
+format = '┤$symbol[$env_value]($style)├─'
+style = "fg:bright-purple"
+symbol = "📝"
 
 [git_branch]
 format = '[$symbol$branch]($style) '
@@ -64,12 +69,7 @@ symbol = "🦀"
 disabled = false
 format = '┤[$symbol$shlvl]($style)├─'
 symbol = "🕳"
-
-[env_var]
-variable = "TYPESCRIPT"
-format = '┤$symbol[$env_value]($style)├─'
-style = "fg:bright-purple"
-symbol = "📝"
+threshold = 1
 
 [status]
 format = '┤[$symbol $status]($style)├─'
@@ -79,5 +79,8 @@ symbol = "❌"
 sigint_symbol = "⚡"
 signal_symbol = "🚦"
 
-[character]
-format = '[\$ ](fg:yellow)'
+[time]
+disabled = false
+format = '┤[$time]($style)├─'
+style = "bright-purple"
+time_format = '%H:%M'
