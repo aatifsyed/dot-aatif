@@ -20,12 +20,14 @@ cargo install --registry crates-io \
     gping \
     hyperfine \
     irust \
+    joshuto \
     loc \
     nu \
     mdbook \
     most-recently \
     starship \
     tealdeer \
-    wait-until
+    wait-until \
+    xplr
 
 cargo install -f --git https://github.com/jez/as-tree

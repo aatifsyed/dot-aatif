@@ -12,6 +12,7 @@ python3 -m pip install --user --upgrade \
     pipx \
     ptpython \
     pyperclip \
+    ranger \
     scapy \
     tables \
     xdg
@@ -19,6 +20,7 @@ python3 -m pip install --user --upgrade \
 pipx install --force cookiecutter
 pipx install --force git-identity
 pipx install --force httpie
+pipx install --force http-prompt
 pipx install --force jc
 pipx install --force jellex
 pipx install --force jello
