@@ -9,8 +9,10 @@ alias cf="code . \$(fzf --multi)"
 alias datestr="date -u +\"%Y-%m-%dT%H-%M-%S%Z\""
 alias f="fzf --multi"
 alias p="ptipython"
+alias pipes="pipes-rs"
 alias powershell="powershell.exe"
 alias winpath="wslpath -w"
+alias wf="winopen-file \"\$(fzf)\""
 
 # Config
 alias exa="exa --all --extended --git --group --header --long --time modified"

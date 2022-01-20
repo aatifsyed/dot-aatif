@@ -12,6 +12,8 @@ cargo install --registry crates-io \
     cargo-workspaces \
     critcmp \
     diskonaut \
+    du-dust \
+    dua-cli \
     exa \
     fd-find \
     flamegraph \
@@ -25,9 +27,11 @@ cargo install --registry crates-io \
     nu \
     mdbook \
     most-recently \
+    procs \
     starship \
     tealdeer \
     wait-until \
     xplr
 
 cargo install -f --git https://github.com/jez/as-tree
+cargo install -f --git https://github.com/lhvy/pipes-rs
