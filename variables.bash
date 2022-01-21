@@ -20,3 +20,5 @@ export CLASSPATH="$CLASSPATH:$DATA_FOLDER/jars/antlr4.jar"
 # Locale
 export LC_ALL="C"
 
+# Python
+export PYTHONSTARTUP="$DATA_FOLDER/dot-aatif/pythonrc.py"
