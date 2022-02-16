@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "CaskaydiaCove Nerd Font, Cascadia Code, Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "CaskaydiaCove Nerd Font, Cascadia Code, Consolas, 'Courier New', monospace",
+    "python.formatting.provider": "black"
 }
