@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -o nounset -o pipefail -o errexit
+
+destination="${1:?"Usage: hasty-historian DESTINATION"}"
+
+function log_exit() {
+    echo "hasty-historian: end" | ts >> "$destination"
+    exit 0
+}
+
+# Catch ^C
+trap log_exit INT # ^C
+
+echo "hasty-historian: start" | ts >> "$destination"
+
+# -r raw
+while IFS=$'\n' read -r line ; do
+    echo "$line" | ts >> "$destination"
+done
+
+# User pressed ^D
+log_exit

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rlwrap \
+    --prompt-colour=cyan \
+    --substitute-prompt "hh> " \
+    _hasty-historian "$@"
