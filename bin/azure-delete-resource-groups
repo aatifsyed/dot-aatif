@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit -o pipefail -o nounset
+
+# Give this a chance to fail if e.g the user is unauthenticated
+groups=$(az group list --output json)
+
+echo "$groups" \
+    | jq -r '.[].name' \
+    | sort \
+    | fzf --multi --header "Select resource groups to delete (TAB) to select multiple" --print0 \
+    | parallel --null az group delete --yes --no-wait --name
