@@ -3,6 +3,7 @@
 eval "$(floki completion bash)"
 eval "$(starship completions bash)"
 eval "$(most-recently completions bash)"
+eval "$(procs --completion-out bash)"
 
 eval "$(activate-global-python-argcomplete --dest -)"
 eval "$(register-python-argcomplete cookiecutter)"
@@ -18,4 +19,5 @@ eval "$(register-python-argcomplete kvv)"
 eval "$(register-python-argcomplete pipx)"
 eval "$(register-python-argcomplete poetry)"
 eval "$(register-python-argcomplete toml-sort)"
-
+eval "$(register-python-argcomplete azis)"
+eval "$(register-python-argcomplete azure-interactive-shortcuts)"

@@ -22,12 +22,14 @@ cargo install --registry crates-io \
     gping \
     hyperfine \
     irust \
+    jless \
     joshuto \
     loc \
     nu \
     mdbook \
     most-recently \
     procs \
+    rust-script \
     starship \
     tealdeer \
     wait-until \

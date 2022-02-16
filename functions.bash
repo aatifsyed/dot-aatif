@@ -31,6 +31,11 @@ function path() {
     echo "$PATH" | tr ':' '\n' | sort
 }
 
+# Edit ssh config
+function ssh-config() {
+    code --new-window "$HOME/.ssh/config"
+}
+
 # Open something with Windows
 function winopen-file() {
     local winpath
@@ -69,4 +74,12 @@ function script() {
     done
 
     TYPESCRIPT="$filename" command script --append --flush "$@"
+}
+
+function asciicast2gif() {
+    local src
+    local dest
+    src="${1:?Must provide a relative source}"
+    dest="${2:?Must provide a relative dest}"
+    docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/data" asciinema/asciicast2gif "/data/$src" "/data/$dest"
 }

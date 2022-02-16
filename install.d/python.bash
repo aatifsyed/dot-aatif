@@ -17,6 +17,7 @@ python3 -m pip install --user --upgrade \
     tables \
     xdg
 
+pipx install --force asciinema
 pipx install --force cookiecutter
 pipx install --force git-identity
 pipx install --force httpie
@@ -29,4 +30,5 @@ pipx install --force kvsh
 pipx install --force python-gitlab
 pipx install --force thefuck
 pipx install --force toml-sort
+pipx install --force azure-interactive-shortcuts
 

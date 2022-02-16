@@ -4,10 +4,10 @@ DATA_FOLDER="${XDG_DATA_HOME:-$HOME/.local/share}"
 GOPATH="${GOPATH:-$HOME/go}"
 
 # Edit path
-export PATH="$PATH:~/.local/bin"
-export PATH="$PATH:$DATA_FOLDER/dot-aatif/bin"
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$HOME/.pyenv/bin"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$DATA_FOLDER/dot-aatif/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 
 # `cd` should autocomplete for these folders
 export CDPATH=$CDPATH:~:~/code:~/lab:~/sources:~/.local/share

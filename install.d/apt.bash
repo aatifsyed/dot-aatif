@@ -20,6 +20,7 @@ sudo apt install --upgrade -y \
     pv \
     ripgrep \
     ruby-full \
+    rlwrap \
     shellcheck \
     sshpass \
     sysstat \
