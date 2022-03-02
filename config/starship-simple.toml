@@ -1,0 +1,9 @@
+# Useful for recording demo GIFs at the terminal
+# export STARSHIP_CONFIG="$HOME/.config/starship-simple.toml"
+format = "$character"
+add_newline = true
+
+[character]
+format = '$symbol '
+success_symbol = '[\$](fg:yellow)'
+error_symbol = '[\$](bold red)'
