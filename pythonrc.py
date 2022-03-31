@@ -1,5 +1,6 @@
 """Sourced as PYTHONSTARTUP for interactive python shells"""
 
+import argparse
 from dataclasses import dataclass
 from datetime import datetime, time, timedelta
 from functools import partial, reduce

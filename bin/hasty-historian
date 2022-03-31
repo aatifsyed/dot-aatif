@@ -2,5 +2,6 @@
 
 rlwrap \
     --prompt-colour=cyan \
+    --complete-filenames \
     --substitute-prompt "hh> " \
     _hasty-historian "$@"

@@ -30,8 +30,10 @@ cargo install --registry crates-io \
     most-recently \
     procs \
     rust-script \
+    sd \
     starship \
     tealdeer \
+    to-html \
     wait-until \
     xplr
 

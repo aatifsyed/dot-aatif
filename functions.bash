@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Copy the result of the previous command
-function copy-that() {
-    local -r previous_command="$(fc -ln -1)" # readonly variable
-    bash -c "$previous_command" | copy
-}
-
 # Background tasks
 function gui() {
     "$@" 2>/dev/null &
@@ -24,11 +18,6 @@ function isset() {
 # Display a gui message
 function popup() {
     msg.exe "*" "$@"
-}
-
-# Print out the path
-function path() {
-    echo "$PATH" | tr ':' '\n' | sort
 }
 
 # Edit ssh config
@@ -83,3 +72,14 @@ function asciicast2gif() {
     dest="${2:?Must provide a relative dest}"
     docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/data" asciinema/asciicast2gif "/data/$src" "/data/$dest"
 }
+
+function cat-cert() {
+    openssl x509 -text -noout -in "$@"
+}
+
+function make-ignored-folder() (
+    set -o errexit -o nounset -o xtrace
+    folder="${1:-ignoreme}"
+    mkdir -p "$folder"
+    printf '/*\n' > "$folder/.gitignore"
+)
