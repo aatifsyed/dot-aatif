@@ -26,14 +26,3 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset SSH_ENV agent_run_state
-
-if [[ -z $ART_CI_USER || -z $ART_CI_TOKEN ]]; then
-    echo "authorize.bash: No login credentials, skipping docker login"
-else
-    NUM_AUTHED=$(jq '.auths | length' ~/.docker/config.json 2>/dev/null)
-    if [ "$NUM_AUTHED" != 3 ]; then
-        echo "$ART_CI_TOKEN" | docker login docker-local-mutable.metaswitch.com --username "$ART_CI_USER" --password-stdin
-        echo "$ART_CI_TOKEN" | docker login docker-local-temp.metaswitch.com --username "$ART_CI_USER" --password-stdin
-        echo "$ART_CI_TOKEN" | docker login docker-local.metaswitch.com --username "$ART_CI_USER" --password-stdin
-    fi
-fi

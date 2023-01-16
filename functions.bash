@@ -15,30 +15,9 @@ function isset() {
     fi
 }
 
-# Display a gui message
-function popup() {
-    msg.exe "*" "$@"
-}
-
 # Edit ssh config
 function ssh-config() {
     code --new-window "$HOME/.ssh/config"
-}
-
-# Open something with Windows
-function winopen-file() {
-    local winpath
-    winpath="$(wslpath -w "$1")"
-    wslview "$winpath"
-}
-
-# Windows home
-function winhome() {
-    local winpath
-    local wslpath
-    winpath="$(wslvar USERPROFILE)"
-    wslpath="$(wslpath "$winpath")"
-    echo "$wslpath"
 }
 
 # Read in from the terminal

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -o xtrace -o errexit
 
-git push --set-upstream origin "$(git branch --show-current)"
+git push --set-upstream origin "$(git branch --show-current)" "$@"

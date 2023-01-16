@@ -7,14 +7,10 @@ alias c="code ."
 alias cdtemp="cd \$(mktemp -d)"
 alias cf="code . \$(fzf --multi)"
 alias datestr="date -u +\"%Y-%m-%dT%H-%M-%S%Z\""
-alias e="explorer.exe ."
 alias f="fzf --multi"
 alias hh="hasty-historian"
 alias p="ptipython"
 alias pipes="pipes-rs"
-alias powershell="powershell.exe"
-alias winpath="wslpath -w"
-alias wf="winopen-file \"\$(fzf)\""
 
 # Config
 alias exa="exa --all --extended --git --group --header --long --time modified"
@@ -24,7 +20,7 @@ alias ncdu="ncdu --exclude=/mnt --exclude=/var/lib/docker"
 alias whois="whois -H"
 
 # Functional
-alias copy="clip.exe"
-alias paste="powershell.exe -Command Get-Clipboard -Format Text -TextFormatType Text"
+alias copy="xclip -sel clip -in"
+alias paste="xclip -sel clip -out"
 alias antlr4='java -Xmx500M org.antlr.v4.Tool'
 alias grun='java -Xmx500M org.antlr.v4.gui.TestRig'

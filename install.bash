@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -o errexit -o xtrace
+set -o errexit -o xtrace -o nounset -o pipefail
 
 CONFIG_FOLDER="${XDG_CONFIG_HOME:-$HOME/.config}"
 INSTALL_FOLDER="${XDG_DATA_HOME:-$HOME/.local/share}/dot-aatif"
@@ -32,7 +31,9 @@ EOF
 echo "Symlinking config"
 ########################
 
-ln -s "$INSTALL_FOLDER/config" "$CONFIG_FOLDER"
+pushd "$CONFIG_FOLDER"
+find "$INSTALL_FOLDER/config" -mindepth 1 -maxdepth 1 -exec ln --symbolic {} . \;
+popd
 
 ##########################
 echo "Installing programs"

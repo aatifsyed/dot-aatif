@@ -3,6 +3,7 @@ set -o errexit -o xtrace
 
 cargo install --registry crates-io \
     bat \
+    cargo-edit \
     cargo-expand \
     cargo-prune \
     cargo-readme \
@@ -17,9 +18,11 @@ cargo install --registry crates-io \
     exa \
     fd-find \
     flamegraph \
+    floki \
     git-delta \
     gitui \
     gping \
+    html2md \
     hyperfine \
     irust \
     jless \

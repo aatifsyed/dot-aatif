@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+tmp=$(mktemp -d)
+pushd -- "$tmp"
+cargo init --vcs none --name updates-crates-io
+time cargo add empty-library
+cargo remove empty-library
+popd
+rm --recursive --force -- "$tmp"

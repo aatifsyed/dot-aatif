@@ -30,9 +30,15 @@ style = "fg:yellow"
 
 [directory]
 format = '┤[$path]($style)[( $read_only)]($read_only_style)├─'
-substitutions = { '~/lab' = "🧪", '~/code' = "💻", '~/scratch' = "📝", '~/sources' = "🛸", '~' = "🏠" }
 style = "fg:cyan"
 truncate_to_repo = false
+
+[directory.substitutions]
+'~/lab' = "🧪"
+'~/code' = "💻"
+'~/scratch' = "📝"
+'~/sources' = "🛸"
+'~' = "🏠"
 
 [env_var]
 variable = "TYPESCRIPT"
