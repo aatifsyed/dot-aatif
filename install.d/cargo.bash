@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -o errexit -o xtrace
 
-cargo install --registry crates-io \
+cargo install cargo-binstall
+
+cargo binstall \
     bat \
     cargo-edit \
     cargo-expand \
