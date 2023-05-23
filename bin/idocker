@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+docker ps \
+    --format '{{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Status}}\t{{.RunningFor}}' \
+    --filter 'status=running' \
+    | fzf --delimiter '\t' --with-nth 2.. \
+    | awk --field-separator '\t' '{print $1}' \
+    | xargs --open-tty --replace='{}' docker exec --interactive --tty --user $(id -u):$(id -g) '{}' bash

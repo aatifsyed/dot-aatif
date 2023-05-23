@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit -o nounset
+
+directory=${1:?Usage: git bootstrap DIRECTORY [BOOTSTRAP_COMMAND..]}
+shift
+
+cd -- "$directory"
+
+git init
+git commit --allow-empty --message "bootstrap: root commit"
+git tag root
+if [ $# -ge 1 ]; then
+    git add .
+    git commit --message "bootstrap: $*"
+fi

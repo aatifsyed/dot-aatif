@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit -o nounset
+
+git submodule deinit -f .
+git submodule update --init

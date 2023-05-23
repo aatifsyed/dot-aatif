@@ -27,7 +27,3 @@ source "$INSTALL_FOLDER/authorize.bash"
 source "$INSTALL_FOLDER/completion.bash"
 # shellcheck source=./functions.bash
 source "$INSTALL_FOLDER/functions.bash"
-
-eval "$(thefuck --alias)"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"

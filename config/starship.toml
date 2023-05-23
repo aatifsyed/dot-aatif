@@ -38,6 +38,7 @@ truncate_to_repo = false
 '~/code' = "💻"
 '~/scratch' = "📝"
 '~/sources' = "🛸"
+'~/chainsafe' = "⛓️"
 '~' = "🏠"
 
 [env_var]

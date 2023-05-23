@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+selected_commit=$(
+    git log --oneline \
+    | fzf --header="select earliest commit to _include_" \
+    | awk '{ print $1 }'
+)
+
+target_branch=$(
+    git branch --all --format='%(refname:short)' \
+    | fzf --header="select branch to rebase onto" --query="origin/main"
+)
+
+git rebase --interactive "$selected_commit~1" --onto "$target_branch"

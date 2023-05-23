@@ -3,7 +3,7 @@ set -o errexit -o xtrace
 
 cargo install cargo-binstall
 
-cargo binstall \
+cargo install \
     bat \
     cargo-edit \
     cargo-expand \
@@ -12,6 +12,7 @@ cargo binstall \
     cargo-tree \
     cargo-udeps \
     cargo-update \
+    cargo-watch \
     cargo-workspaces \
     critcmp \
     diskonaut \
@@ -40,6 +41,7 @@ cargo binstall \
     tealdeer \
     to-html \
     wait-until \
+    xh \
     xplr
 
 cargo install -f --git https://github.com/jez/as-tree

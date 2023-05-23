@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+cargo add "$@" clap --features derive
+cargo add "$@" tracing-subscriber --features env-filter,fmt
+cargo add "$@" \
+    clap-verbosity-flag \
+    color-eyre \
+    log \
+    tracing
