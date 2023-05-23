@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+default_region=lon1
+default_image=ubuntu-22-04-x64
+default_size=g-2vcpu-8gb
+default_droplet_name=aatifsyed
+default_tag=aatifsyed
+
+image=$default_image
+if ! gum confirm "Use default image '$default_image'?" --default=yes; then
+    image=$(
+        doctl compute image list-distribution --format=Slug,Name,Type,Distribution,Public,MinDisk,ID \
+            | fzf --header="select image" --query="ubuntu" --header-lines=1 \
+            | cat \
+            | awk '{ print $1 }' 
+    )
+fi
+
+region=$default_region
+if ! gum confirm "Use default region '$default_region'?" --default=yes; then
+    region=$(
+        doctl compute region list --format=Slug,Name,Available \
+            | fzf --header="select region" --query="lon1" --header-lines=1 \
+            | cat \
+            | awk '{ print $1 }'
+    )
+fi
+
+size=$default_size
+if ! gum confirm "Use default size '$default_size'?" --default=yes; then
+    size=$(
+        doctl compute size list --format=Slug,Description,Memory,VCPUs,Disk,PriceMonthly,PriceHourly \
+            | fzf --header="select size" --query="lon1" --header-lines=1 \
+            | cat \
+            | awk '{ print $1 }'
+    )
+fi
+
+name=$(gum input --header="Enter droplet name:" --value="$default_droplet_name")
+
+doctl compute droplet create "$name" --image="$image" --size="$size" --region="$region" --tag-name="$default_tag" --wait --verbose

@@ -14,6 +14,7 @@ cargo install \
     cargo-update \
     cargo-watch \
     cargo-workspaces \
+    confirm-rs \
     critcmp \
     diskonaut \
     du-dust \

@@ -11,6 +11,7 @@ alias f="fzf --multi"
 alias hh="hasty-historian"
 alias p="ptipython"
 alias pipes="pipes-rs"
+alias ocean="doctl"
 
 # Config
 alias exa="exa --all --extended --git --group --header --long --time modified"

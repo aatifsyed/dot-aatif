@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+droplet_id=$(
+    doctl compute droplet list --format=ID,Name,Memory,VCPUs,Region,Status,Tags,Image    \
+        | fzf --header-lines=1 --query=aatifsyed --with-nth=2.. \
+        | awk '{ print $1 }'
+)
+
+doctl compute droplet delete "$droplet_id"
