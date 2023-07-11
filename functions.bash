@@ -62,3 +62,18 @@ function make-ignored-folder() (
     mkdir -p "$folder"
     printf '/*\n' > "$folder/.gitignore"
 )
+
+function bat-which() {
+    bat "$(which "$1")"
+}
+
+function cdroot() {
+    root=$(git rev-parse --show-toplevel)
+    if [[ $? -eq 0 ]]; then
+        cd -- "$root"
+    fi
+}
+
+function f() {
+    EDITOR="_fx" fc
+}

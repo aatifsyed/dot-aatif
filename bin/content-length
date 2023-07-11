@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+num_bytes=$(
+    curl --silent --show-error --head "$1" \
+        | rg '^content-length: (\d*)' --only-matching --replace '$1'
+)
+
+human=$(numfmt --to=iec-i "$num_bytes")
+
+printf '%s bytes (%sB)\n' "$num_bytes" "$human"

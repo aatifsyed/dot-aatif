@@ -14,3 +14,4 @@ for bcfile in ~/.bash_completion.d/* ; do
 done
 
 complete -F _complete_alias ocean
+complete -c bat-which

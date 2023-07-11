@@ -27,3 +27,4 @@ export PYTHONSTARTUP="$DATA_FOLDER/dot-aatif/pythonrc.py"
 
 export CHROME_EXECUTABLE="google-chrome-stable"
 
+export DOT_AATIF_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/dot-aatif"

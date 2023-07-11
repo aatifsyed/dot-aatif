@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+dst=/mnt/c/Users/aatif/.ssh
+src=~/.ssh
+
+rm --recursive "$dst/config.d"
+cp --recursive "$src/config.d" "$dst"

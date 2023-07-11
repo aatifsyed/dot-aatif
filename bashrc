@@ -9,10 +9,7 @@ INSTALL_FOLDER="${XDG_DATA_HOME:-$HOME/.local/share}/dot-aatif"
 
 # Order dependencies up front
 if [ -f "$CONFIG_FOLDER/tokens.bash" ]; then
-    # shellcheck source=/home/developer/.config/dot-aatif/tokens.bash
     source "$CONFIG_FOLDER"/tokens.bash
-else
-    echo "dot-aatif/bashrc: No 'tokens.bash' in $CONFIG_FOLDER"
 fi
 
 # shellcheck source=./variables.bash

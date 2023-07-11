@@ -1,0 +1,49 @@
+#!/usr/bin/env python3.11
+import subprocess
+import json
+from sys import stderr
+from typing import Literal, TypedDict
+
+REQUIRED_APPROVALS = 2
+
+
+class Review(TypedDict):
+    authorAssociation: Literal["MEMBER"] | str
+    state: Literal["APPROVED"] | str
+
+
+class Pr(TypedDict):
+    url: str
+    title: str
+    number: int
+    reviews: list[Review]
+
+
+completed = subprocess.run(
+    [
+        "gh",
+        "pr",
+        "list",
+        "--author=@me",
+        "--draft=false",
+        "--json=url,title,number,reviews",
+    ],
+    check=True,
+    capture_output=True,
+    text=True,
+)
+
+prs: list[Pr] = json.loads(completed.stdout)
+
+for pr in prs:
+    approvals = sum(
+        1
+        for review in pr["reviews"]
+        if review["authorAssociation"] == "MEMBER" and review["state"] == "APPROVED"
+    )
+    if approvals >= REQUIRED_APPROVALS:
+        print(f"#{pr['number']} is ready: {pr['url']}", file=stderr)
+    else:
+        print(
+            f":github-pr-open: [#{pr['number']}]({pr['url']}) `{pr['title']}` _{approvals}/{REQUIRED_APPROVALS} approvals_"
+        )

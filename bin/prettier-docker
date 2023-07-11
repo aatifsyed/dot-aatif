@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+docker run \
+    --rm \
+    --user="$(id --user):$(id --group)" \
+    --volume="$(pwd):/work:rw" \
+    tmknom/prettier \
+    --write '**/*.md'

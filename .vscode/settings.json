@@ -1,4 +1,7 @@
 {
     "editor.fontFamily": "CaskaydiaCove Nerd Font, Cascadia Code, Consolas, 'Courier New', monospace",
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "none",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
 }
