@@ -65,7 +65,8 @@ mkdir /snapshots
 aria2c --daemon --dir /snapshots \
     https://forest-snapshots.fra1.cdn.digitaloceanspaces.com/debug/filecoin_full_calibnet_2023-04-07_450000.car
 
-cd
+home=$(cd && pwd) # for some reason $HOME isn't set when this is run
+cd -- "$home"
 source .cargo/env
 
 git clone --recurse-submodules https://github.com/ChainSafe/forest.git
@@ -79,7 +80,7 @@ cargo bench --no-run
 
 cargo install hyperfine biodiff exa zellij cargo-criterion
 curl https://starship.rs/install.sh --silent --show-error | sh -s -- --yes
-printf 'eval "$(starship init bash)"' >> $HOME/.bashrc
+printf 'eval "$(starship init bash)"' >> $home/.bashrc
 
 popd
 
