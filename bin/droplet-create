@@ -46,7 +46,7 @@ if ! gum confirm "Use default size '$default_size'?" --default=yes; then
 fi
 
 
-ssh_user="root"
+ssh_user="root" # note we set HOME in the user data script
 user_data_file=$(mktemp --suffix=.user-data.droplet-create)
 
 # turn off variable substitution by quoting 'EOF'
@@ -60,14 +60,12 @@ apt upgrade --yes
 apt install --yes build-essential aria2 moreutils mold
 
 curl https://sh.rustup.rs --silent --show-error | sh -s -- -y --verbose  --default-toolchain none
+HOME=/root # for some reason $HOME isn't set when this is run
+source "$HOME/.cargo/env"
 
 mkdir /snapshots
 aria2c --daemon --dir /snapshots \
     https://forest-snapshots.fra1.cdn.digitaloceanspaces.com/debug/filecoin_full_calibnet_2023-04-07_450000.car
-
-home=$(cd && pwd) # for some reason $HOME isn't set when this is run
-cd -- "$home"
-source .cargo/env
 
 git clone --recurse-submodules https://github.com/ChainSafe/forest.git
 pushd forest
@@ -80,7 +78,7 @@ cargo bench --no-run
 
 cargo install hyperfine biodiff exa zellij cargo-criterion
 curl https://starship.rs/install.sh --silent --show-error | sh -s -- --yes
-printf 'eval "$(starship init bash)"' >> $home/.bashrc
+printf 'eval "$(starship init bash)"' >> $HOME/.bashrc
 
 popd
 
