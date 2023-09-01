@@ -76,7 +76,7 @@ make install-deps
 cargo build
 cargo bench --no-run
 
-cargo install hyperfine biodiff exa zellij cargo-criterion
+cargo install hyperfine biodiff exa zellij cargo-criterion pv
 curl https://starship.rs/install.sh --silent --show-error | sh -s -- --yes
 printf 'eval "$(starship init bash)"' >> $HOME/.bashrc
 
