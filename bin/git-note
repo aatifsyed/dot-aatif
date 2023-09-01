@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+if ! git diff-index --quiet --cached HEAD --; then
+    : There are staged changes.
+    : Commit or unstage them and rerun this command
+    exit 1
+fi
+
+git commit --allow-empty --message "note: $*"
