@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+branch=$(
+    git branch --sort -committerdate --format '%(refname:short) (%(committerdate:relative))' "$@" \
+    | fzf \
+    | cat \
+    | awk '{ print $1 }' 
+)
+
+git checkout "$branch"

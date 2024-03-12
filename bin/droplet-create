@@ -4,6 +4,9 @@ set -euxo pipefail
 # echo 'Include config.d/*' >> ~/.ssh/config
 # mkdir ~/.ssh/config.d
 
+script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+default_user_data_file=$script_dir/droplet-create-user-data.bash
+
 default_region=fra1
 default_image=ubuntu-22-04-x64
 default_size=c2-8vcpu-16gb # g-2vcpu-8gb
@@ -46,43 +49,14 @@ if ! gum confirm "Use default size '$default_size'?" --default=yes; then
 fi
 
 
-ssh_user="root" # note we set HOME in the user data script
-user_data_file=$(mktemp --suffix=.user-data.droplet-create)
+ssh_user="root"
+user_data_file=/dev/null
 
-# turn off variable substitution by quoting 'EOF'
-cat << 'EOF' > "$user_data_file"
-#!/usr/bin/env bash
-set -eux
+cat "$default_user_data_file"
 
-DEBIAN_FRONTEND=noninteractive
-apt update
-apt upgrade --yes
-apt install --yes build-essential aria2 moreutils mold
-
-curl https://sh.rustup.rs --silent --show-error | sh -s -- -y --verbose  --default-toolchain none
-HOME=/root # for some reason $HOME isn't set when this is run
-source "$HOME/.cargo/env"
-
-mkdir /snapshots
-aria2c --daemon --dir /snapshots \
-    https://forest-snapshots.fra1.cdn.digitaloceanspaces.com/debug/filecoin_full_calibnet_2023-04-07_450000.car
-
-git clone --recurse-submodules https://github.com/ChainSafe/forest.git
-pushd forest
-
-rustup show active-toolchain | awk '{ print $1 }' | xargs rustup default
-
-make install-deps
-cargo build
-cargo bench --no-run
-
-cargo install hyperfine biodiff exa zellij cargo-criterion pv
-curl https://starship.rs/install.sh --silent --show-error | sh -s -- --yes
-printf 'eval "$(starship init bash)"' >> $HOME/.bashrc
-
-popd
-
-EOF
+if gum confirm "Run the startup script?" --default=yes; then
+    user_data_file=$default_user_data_file
+fi
 
 name=$(gum input --header="Enter droplet name:" --value="$default_droplet_name")
 
@@ -110,7 +84,8 @@ ssh_host="$name"
 printf '\nHost %s\n\tHostname %s\n\tUser %s\n' "$ssh_host" "$droplet_ip_addr" "$ssh_user" \
     > "$HOME/.ssh/config.d/droplet.$ssh_host" # overwrite file
 
-gum spin --show-output --title="waiting for ssh server..." -- bash -c "set +x; while true; do if ssh -o BatchMode=yes -o StrictHostKeyChecking=no $ssh_host whoami; then break; fi; sleep 1; done"
+gum spin --show-output --title="waiting for ssh server..." -- \
+    bash -c "set +x; until ssh -o BatchMode=yes -o StrictHostKeyChecking=no $ssh_host whoami; do sleep 1; done"
 
 : "see logs with: ssh $ssh_host tail --follow /var/log/cloud-init-output.log"
 gum spin --show-output --title="waiting for cloud-init to complete..." -- ssh "$ssh_host" cloud-init status --wait
