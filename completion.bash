@@ -6,7 +6,7 @@ eval "$(most-recently completions bash)"
 eval "$(procs --completion-out bash)"
 # eval "$(kubectl completion bash)"
 
-eval "$(activate-global-python-argcomplete3 --dest -)"
+eval "$(activate-global-python-argcomplete --dest -)"
 eval "$(doctl completion bash)"
 
 for bcfile in ~/.bash_completion.d/* ; do
