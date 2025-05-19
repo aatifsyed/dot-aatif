@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import csv
+from pathlib import Path
+
+source = Path(
+    "/home/aatif/code/crates-io-db-browser/db-dump/2024-05-08-020034/data/categories.csv"
+)
+lines = source.read_text().splitlines()
+for row in csv.reader(lines):
+    slug = row[6]
+    description = row[3].strip()
+    print(f"{slug}\t{description}")

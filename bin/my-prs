@@ -17,6 +17,11 @@ class Pr(TypedDict):
     title: str
     number: int
     reviews: list[Review]
+    additions: int
+    deletions: int
+    isDraft: bool
+    mergeable: bool
+    state: str
 
 
 completed = subprocess.run(
@@ -25,8 +30,7 @@ completed = subprocess.run(
         "pr",
         "list",
         "--author=@me",
-        "--draft=false",
-        "--json=url,title,number,reviews",
+        "--json=url,title,number,reviews,additions,deletions,isDraft,mergeable,state",
     ],
     check=True,
     capture_output=True,
@@ -44,6 +48,10 @@ for pr in prs:
     if approvals >= REQUIRED_APPROVALS:
         print(f"#{pr['number']} is ready: {pr['url']}", file=stderr)
     else:
+        if pr["isDraft"]:
+            icon = "github-pull-request-draft"
+        else:
+            icon = "github-pr-open"
         print(
-            f":github-pr-open: [#{pr['number']}]({pr['url']}) `{pr['title']}` _{approvals}/{REQUIRED_APPROVALS} approvals_"
+            f":{icon}: [#{pr['number']}]({pr['url']}) `{pr['title']}` _{approvals}/{REQUIRED_APPROVALS} approvals_ `+{pr['additions']}|-{pr['deletions']}`"
         )

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -o xtrace -o errexit -o nounset
+
+git show --no-patch --no-notes --pretty='reference' "${1:-HEAD}"

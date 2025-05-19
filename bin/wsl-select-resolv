@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-server=$(
+contents=$(
     cargo.exe run --release --quiet --manifest-path 'C:\Users\aatif\Code\windows-iphelper\Cargo.toml' \
-        | fzf --header="select dns server" --delimiter='\t' \
-        | awk '{ print $1 }'
+        | fzf --header="select dns server" --delimiter='\t' --multi \
+        | awk '{ print "nameserver " $1 }'
 )
 
-txt="nameserver $server"
 path="/etc/resolv.conf"
+: $contents
 if gum confirm --default=yes "overwrite $path?"; then
     sudo cp "$path" "$path.bak"
-    echo "$txt" | sudo tee "$path" > /dev/null
+    echo "$contents" | sudo tee "$path" > /dev/null
     ping -c1 google.com
 fi

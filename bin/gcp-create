@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+default_instance_name=aatif-general
+
+name=$(gum input --header="Enter droplet name:" --value="$default_instance_name")
+gcloud compute instances create --source-instance-template=aatif-template "$name"
+
+until gcloud compute ssh "$name" --tunnel-through-iap -- whoami; do sleep 1; done
+
+startup_script='
+set -euxo pipefail
+
+export DEBIAN_FRONTEND=noninteractive
+
+: install rustup
+curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+: install build-deps
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y gcc-8 libssl-dev make pkg-config
+
+# gcc-{9,10} has a bug in memcmp which a dep falls over on
+sudo ln -s "$(which gcc-8)" /usr/local/bin/cc
+
+git clone https://github.com/0xPolygonZero/zk_evm
+'
+
+if gum confirm "run startup script?" --default=yes; then
+    gcloud compute ssh "$name" -- bash -c "$startup_script"
+fi
+
+gcloud compute ssh "$name"
