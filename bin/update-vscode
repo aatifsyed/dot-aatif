@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+pushd "$(mktemp -d)"
+
+curl --silent --show-error --location 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' --output installme.deb
+sudo dpkg --install installme.deb
+
+popd

@@ -12,7 +12,7 @@ export PATH="$HOME/sources/protoc-22.0-linux-x86_64/bin:$PATH"
 export PATH="$HOME/sources/flutter/bin:$PATH"
 
 # `cd` should autocomplete for these folders
-export CDPATH=$CDPATH:~:~/polygon:~/chainsafe:~/code:~/lab:~/sources:~/.local/share
+export CDPATH=$CDPATH:~:~/lo:~/polygon:~/chainsafe:~/code:~/lab:~/sources:~/.local/share
 
 export EDITOR=vim
 
